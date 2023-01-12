@@ -1,0 +1,210 @@
+#VRML_SIM R2022b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5390521027827381 0.5231186833171408 0.6601285281292191 2.002097321629861
+  position -0.2141605701732893 -0.6051500792155253 2.6238203047294655
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2 1
+  floorTileSize 1.9 1
+  floorAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "line2.png"
+        "line1.png"
+      ]
+      repeatS FALSE
+      repeatT FALSE
+    }
+    metalness 0
+  }
+  wallThickness 0.001
+  wallHeight 0.0001
+}
+Robot {
+  translation 0.07652483121183364 -0.288742159918788 0.019947647522088892
+  rotation -0.000347517032539344 -0.002556765040070111 0.9999966710866801 -0.2702958501069208
+  children [
+    DistanceSensor {
+      translation 0 0 -0.0049998
+      rotation 0 1 0 1.5708
+      children [
+        DEF Distance_sensor Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.002
+          }
+        }
+      ]
+      name "ds_m"
+      boundingObject USE Distance_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    BallJoint {
+      jointParameters BallJointParameters {
+        position 14.153460295179427
+        anchor 0.035 0 -0.012
+      }
+      endPoint Solid {
+        translation 0.0350011075094549 -4.631620781347934e-08 -0.011999402618347418
+        rotation 0.0895885859255791 0.8857040913699956 -0.45552403647042095 -2.0699700252265156
+        children [
+          DEF Balance_ball Shape {
+            appearance PBRAppearance {
+              baseColor 0 0.333336 0
+            }
+            geometry Sphere {
+              radius 0.008
+              subdivision 3
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE Balance_ball
+        physics Physics {
+        }
+        linearVelocity 0.0726226729347096 -0.02011185906890695 -1.7141561342499477e-08
+        angularVelocity 2.513982357247914 9.077834073448429 12.1471496478571
+      }
+    }
+    DistanceSensor {
+      translation 0 -0.015 -0.005
+      rotation 0 1 0 1.5708
+      children [
+        DEF Distance_sensor Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.002
+          }
+        }
+      ]
+      name "ds_r"
+      boundingObject USE Distance_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -4.89665e-14 0.015 -0.0049998
+      rotation 0 1 0 1.5708
+      children [
+        USE Distance_sensor
+      ]
+      name "ds_l"
+      boundingObject USE Distance_sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 460.67221089393774
+        axis 0 1 0
+        anchor -0.03 -0.03 0
+      }
+      device [
+        RotationalMotor {
+          name "right wheel"
+        }
+      ]
+      endPoint Solid {
+        translation -0.029999999988501502 -0.03 2.514570158949169e-11
+        rotation -0.4135323980186389 -0.6438120497222583 0.6438144145803033 3.9258251224005374
+        children [
+          DEF Kolo Shape {
+            appearance PBRAppearance {
+              baseColor 0.317647 0.317647 0.317647
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE Kolo
+        physics Physics {
+        }
+        linearVelocity 0.0726216338266003 -0.02011752048152058 -1.8365764384760903e-08
+        angularVelocity 1.0062043280892834 3.631053473256155 -4.747870010352889e-05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 416.864410778781
+        axis 0 1 0
+        anchor -0.03 0.03 0
+      }
+      device [
+        RotationalMotor {
+          name "left wheel"
+        }
+      ]
+      endPoint Solid {
+        translation -0.029999999984219653 0.03 2.2899418466645855e-11
+        rotation 0.34821691551850115 0.6628505683546798 -0.6628530031452363 2.471424048879326
+        children [
+          DEF Kolo Shape {
+            appearance PBRAppearance {
+              baseColor 0.317647 0.317647 0.317647
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE Kolo
+        physics Physics {
+        }
+        linearVelocity 0.07262182467808323 -0.02012182483170274 1.540705092147951e-08
+        angularVelocity 1.0059661601958816 3.631119461480148 -2.0660223268284878e-05
+      }
+    }
+    DEF Korpus Solid {
+      children [
+        DEF Body Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.1 0.4
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.05 0.01
+          }
+        }
+      ]
+      boundingObject USE Body
+      physics Physics {
+      }
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "follower"
+  linearVelocity 0.07261952002731656 -0.020119754476841955 3.2942193563708904e-06
+  angularVelocity -2.882635165712414e-05 -0.00010596448153156132 -2.4749114745562617e-05
+}
